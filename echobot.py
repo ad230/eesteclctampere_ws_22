@@ -17,26 +17,30 @@ import logging
 
 from telegram import __version__ as TG_VER
 
-try:
+try:                                                                #a try to find out what a verion does the user has
     from telegram import __version_info__
 except ImportError:
     __version_info__ = (0, 0, 0, 0, 0)  # type: ignore[assignment]
 
-if __version_info__ < (20, 0, 0, "alpha", 1):
-    raise RuntimeError(
+if __version_info__ < (20, 0, 0, "alpha", 1):                                                   #reaction on a low version
+    raise RuntimeError(                                                                         #throwing an error
         f"This example is not compatible with your current PTB version {TG_VER}. To view the "
         f"{TG_VER} version of this example, "
         f"visit https://docs.python-telegram-bot.org/en/v{TG_VER}/examples.html"
     )
-from telegram import ForceReply, Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-
+from telegram import ForceReply, Update                                                         #making a force reply (Update?)
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters    
+'''
+import necessary classes for a proper work of an application + 
+a class for creating and using commands + a class for what? + 
+a class to contain messages
+'''
 # using separate configuration and parser
 from configparser import ConfigParser
 
 # configparser
 cfg = ConfigParser()
-cfg.read('env.cfg')
+cfg.read('env.cfg')         #reading an configuration info w/ a help of ConfigParser from a file with this name?
 
 # Enable logging
 logging.basicConfig(
