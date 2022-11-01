@@ -21,17 +21,17 @@ Base project for Great Northern Health Tracking Trek. EESTEC LC Tampere workshop
 
 - `sudo apt install sqlite3`
 
-### Installing all libraries listed in requirements
-
-- `pip install -r requirements.txt`
-
-## 1. Getting access to repository
+## 0. Getting access to repository
 
 - Log in or sign up to github.
 - Now let's fork this repository: https://github.com/ahvena91/eesteclctampere_ws_22
 - Forking means that you take a copy of source code and start independet development on it
 - main branch has few minimal examples
 - if you get stuck or want to check something there's a bit more advanced sources in other branches
+
+### 1. Installing all libraries listed in requirements
+
+- `pip install -r requirements.txt`
 
 ## 2. Talking to botfather and getting your token
 
