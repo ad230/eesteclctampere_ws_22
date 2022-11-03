@@ -47,12 +47,12 @@ logger = logging.getLogger(__name__)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """"""
     user = update.effective_user
-    await update.message.reply_html(
-        rf"Hi {user.mention_html()}!",
+    await update.message.reply_text(
+        rf"Hi {user.first_name()}!",
     )
     await update.message.reply_text(
-        "I am your Conversation Bot!\n"
-        "Send /cancel to stop me \n"
+        "I am your HealthTracking Bot!\n"
+        "Here are some commands, which I can do:\n\n"
     )
 
 def main() -> None:
