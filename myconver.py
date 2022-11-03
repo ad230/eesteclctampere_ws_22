@@ -45,15 +45,27 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """"""
+    # Starting command w/ some instructions
     user = update.effective_user
-    await update.message.reply_text(
-        rf"Hi {user.first_name()}!",
+    await update.message.reply_html(
+        rf"Hi {user.mention_html()}!",
     )
     await update.message.reply_text(
         "I am your HealthTracking Bot!\n"
-        "Here are some commands, which I can do:\n\n"
+        "/help -- to get a list of available list of commands\n"
+        "/cancel -- stopping the conversation with the bot\n"
+        '"More features Under construction"'
     )
+
+async def cancel(update: Update, context:ContextTypes.DEFAULT_TYPE) -> int:
+    user = update.message.from_user
+    logger.info("User %s canceled the conversation", user.first_name)
+    await update.message.reply_text(
+        "You have finished our dialog!\n See you soon!"
+    )
+    
+    return ConversationHandler.END
+
 
 def main() -> None:
     # bot functionality starts
