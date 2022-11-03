@@ -1,7 +1,13 @@
 # eesteclctampere_ws_22
 Base project for Great Northern Health Tracking Trek. EESTEC LC Tampere workshop November 2022
 
-## Crash course to git
+## Install Git if you don't have already
+
+- Git is a software for distributed version control
+- Linux: `apt install git`
+- Windows: https://gitforwindows.org/
+
+### Crash course to git
 
 - `git status`
   - returns status of the repository
@@ -25,19 +31,16 @@ Base project for Great Northern Health Tracking Trek. EESTEC LC Tampere workshop
 
 ## 0. Installing required tools and packages
 
-### Git if you don't have already
-
-- `apt install git`
-
 ### Package installer for Python
 
-- `apt install python3-pip`
+- Linux: `apt install python3-pip`
+- Windows: https://www.geeksforgeeks.org/how-to-install-pip-on-windows/
 
 ### Python Telegram Bot 
 
 - `pip install python-telegram-bot -U --pre`
   - pre-releases https://github.com/python-telegram-bot/python-telegram-bot/wiki/introduction-to-the-API
-  - If you want to use older version like 13.0 the syntax is quite different.
+  - We are using pre-release version 20.0a4
 
 ### Data is stored with sqlite3 database so let's install that
 
@@ -48,18 +51,21 @@ Base project for Great Northern Health Tracking Trek. EESTEC LC Tampere workshop
 - Log in or sign up to github.
 - Now let's fork this repository: https://github.com/ahvena91/eesteclctampere_ws_22
 - Forking means that you take a copy of source code and start independet development on it
-- main branch has few minimal examples
-- if you get stuck or want to check something there's a bit more advanced sources in other branches
+- ~~main branch has few minimal examples~~ 
+- 3_plotting_test is now merged to main. This means that the latest updates are now updated to main branch
 
 ### 1. Installing all libraries listed in requirements
 
 - `pip install -r requirements.txt`
+- You need access to repository first so that pip can use requirements.txt
 
 ## 2. Talking to botfather and getting your token
 
 - start conversation with https://t.me/botfather
+- create your own bot with botfather
 - make a copy of `env-example.cfg` and rename it to `env.cfg`
 - `env.cfg` is se to .gitignore so that we wont't publish our personal bot token by accident
+- Rember to not publish your bot token! If you do anyone might be able to use your bot
 
 ## 3. Check echobot and conversationbot + 1_input_test
 
@@ -74,14 +80,16 @@ Base project for Great Northern Health Tracking Trek. EESTEC LC Tampere workshop
     - https://ptb-test.readthedocs.io/en/latest/telegram.ext.messagehandler.html
 - In the original repository there's separate branches with more code included if you get stuck or just want to check something for reference
 
-![Branches](branches1.png)
+- Update: Latest features are now merged to main branch
+
+![Branches](images/branches1.png)
 
 - You may also fork the repository again 
 - or just copy some of the contents
 
 ## 4. Plan your own features for the bot
 
-- Minimum requirements would be that user is able to store data and plot it 
+- Minimum requirements would be that user is able to store data and plot it or use the data some other wayss
 - But of course this is your own design 
 - You may check out this features.mmd https://github.com/ahvena91/eesteclctampere_ws_22/blob/main/features.mmd
   - if you want to view it locally you need to install extension for VS Code to view it.
