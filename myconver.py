@@ -44,19 +44,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Starting command w/ some instructions
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    # Starting command w/ some instructions
     user = update.effective_user
     await update.message.reply_html(
         rf"Hi {user.mention_html()}!",
     )
     await update.message.reply_text(
         "I am your HealthTracking Bot!\n"
-        "/help -- to get a list of available list of commands\n"
-        "/cancel -- stopping the conversation with the bot\n"
-        '"More features Under construction"'
+        "/help       -- to get a list of available list of commands\n"
+        "/cancel   -- stop the bot\n"
     )
 
+#command which stops a bot
 async def cancel(update: Update, context:ContextTypes.DEFAULT_TYPE) -> int:
     user = update.message.from_user
     logger.info("User %s canceled the conversation", user.first_name)
@@ -66,6 +66,16 @@ async def cancel(update: Update, context:ContextTypes.DEFAULT_TYPE) -> int:
     
     return ConversationHandler.END
 
+#TOFINISH new commands
+#command for a list of commands
+async def help(update: Update, context:ContextTypes.DEFAULT_TYPE) -> int:
+    await update.message.reply_text(
+        "Here is the list of commands which are supported by bot:\n\n"
+        "/start        -- restarting a bot\n"
+        "/help        -- showimg a list of commands\n"
+        "/cancel    -- stops the bot\n"
+        '"More features are under construction"'
+    )
 
 def main() -> None:
     # bot functionality starts
@@ -74,9 +84,10 @@ def main() -> None:
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("start",  start)],
         states={},
-        fallbacks=[],
+        fallbacks=[CommandHandler("cancel", cancel)],
     )
     application.add_handler(conv_handler)
+    application.add_handler(CommandHandler("help", help))
 
     # Run the bot until presses Ctrl-C
     application.run_polling()
